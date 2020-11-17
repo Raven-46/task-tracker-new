@@ -37,28 +37,32 @@ public class SignUpService
 	
 	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
-	public String signUp(User user, int mode) throws Exception
+	public ResponseEntity<?> signUp(User user, int mode) throws Exception
 	{
-		
-		if(userRepo.findByUsername(user.getUsername()).isPresent())
-			return "Sorry username already exists";
-		else if(userRepo.findByEmail(user.getEmail()).isPresent())
-			return "Sorry, an account with this email already exists";
 		System.out.println(user.getUsername());
+		System.out.println(user.getPassword());
+		System.out.println(user.getEmail());
+		System.out.println(user.getPhone());
+		if(userRepo.findByUsername(user.getUsername()).isPresent())
+			return ResponseEntity.ok(0);
+		else if(userRepo.findByEmail(user.getEmail()).isPresent())
+			return ResponseEntity.ok(1);
+		
 		user.setSecret(String.valueOf(ThreadLocalRandom.current().nextInt(100000, 1000000)));
 		user.setSignup(-1);
 		user.setDate(format.format(new Date()));
+		user.setTime("09:00:00");
 		userRepo.save(user);
 		
 		if(mode == 1)
 			emailService.sendOtp(user);
-		return "confirm otp";
+		return ResponseEntity.ok(2);
 	}
 	
 	public ResponseEntity<?> confirmOtp(SignUpRequest signUpRequest) throws Exception
 	{
 		System.out.println(signUpRequest.getUsername());
-		User user = userRepo.findByUsername(signUpRequest.getUsername()).get();
+		User user = userRepo.findByUsername(signUpRequest.getUsername()).orElse(null);
 		System.out.println(user);
 		Calendar cl = Calendar. getInstance();
 		Date date =  format.parse(user.getDate());

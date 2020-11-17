@@ -56,10 +56,17 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter
 			.antMatchers("/oauth/google").permitAll()
 			.antMatchers("/oauth/facebook").permitAll()
 			.antMatchers("/just-once").permitAll()
+			.antMatchers("/img/*").permitAll()
+			.antMatchers("/styles/*").permitAll()
+			.antMatchers("/scripts/*").permitAll()
+			.antMatchers("/favicon.ico").permitAll()
+			.antMatchers("/my/*").permitAll()
+			.antMatchers("/logout").permitAll()
 			.anyRequest().authenticated()
 			.and().sessionManagement()
-			.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-		
+			.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+			.and()
+			.logout().disable();
 		http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 	}
 	

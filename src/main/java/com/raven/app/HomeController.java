@@ -35,7 +35,7 @@ public class HomeController
 	public String home()
 	{
 		System.out.println("in /");
-		return "home.jsp";
+		return "homepage.html";
 	}
 	
 	@GetMapping("/login")
@@ -58,15 +58,21 @@ public class HomeController
 		return createToken.createAuthenticationTokenNormal(authenticationRequest, false);
 	}
 	
+	@GetMapping("/logout")
+	public String getLogout()
+	{
+		System.out.println("in logout");
+		return "logout.html";
+	}
+	
 	@GetMapping("/signup")
 	public String getSignup()
 	{
-		return "sign-up.jsp";
+		return "signup.html";
 	}
 	
 	@PostMapping("/signup")
-	@ResponseBody
-	public String signUp(@RequestBody User user, @RequestParam Integer mode) throws Exception
+	public ResponseEntity<?> signUp(@RequestBody User user, @RequestParam Integer mode) throws Exception
 	{
 		return signUpService.signUp(user, mode);
 	}

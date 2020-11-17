@@ -95,4 +95,15 @@ public class CreateAuthenticationToken
 		return ResponseEntity.ok(new AuthenticationResponse(jwt));
 	}
 	
+	public String createAuthenticationTokenSocial2(String username) throws Exception
+	{
+		System.out.println("1: done");
+		UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+
+		System.out.println(userDetailsService.loadUserByUsername(username));
+		jwt = jwtService.generateToken(userDetails);
+		System.out.println("jwt is " + jwt);
+		
+		return jwt;
+	}
 }

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <title>Raven-46</title>     
+
+        <style>
+            
+        
+            body,html{
+                margin: 0;
+                padding: 0;
+            }
+            
+            #logo{
+                position: relative;
+                width: 300px;
+                right: 500px;
+                top: -40px; 
+                animation-name: slidein;
+                animation-duration: 1s;
+                animation-fill-mode: forwards;
+                animation-iteration-count: 1;
+                             
+            }
+
+            @keyframes slidein{
+                0%{
+                    top: -500px;
+                }
+                100%{
+                    top: -40px;
+                }
+            }            
+            #toprect{
+                margin: 0px;                              
+                background-color: #23272a;
+                height: 65vh;
+                width: 100%;
+                text-align: center;              
+            }
+            #navbar{             
+
+                margin: auto;
+                width:30%;
+                text-align: center;
+                vertical-align: middle;
+                height: 40px;               
+            }
+            .navbtn{                
+                outline: none;     
+                position: relative; 
+                top: 40px;          
+                background-color: transparent;
+                font-family: Helvetica,Arial,sans-serif;
+                font-weight: 600;                
+                font-size: 16px;
+                border: transparent;
+                color: #fefeff;  
+                text-align: center;                  
+                width: 90px; 
+                vertical-align: middle;     
+                
+            }
+            #loginbtn{
+                text-align: right;
+                margin: auto;
+            }          
+            
+            #login{
+                font-weight: 400;
+                position: realtive;
+                right: 60px;
+                height: 40px;
+                top:3px;
+                background-color:#fefeff;
+                color:  #23272a;
+                border-radius: 50px;                
+                width: 80px;                
+                
+            }
+            #login:hover{
+                color: #9cc1cf;
+            } 
+            #about{              
+                
+                width: 50px;
+                height: auto;                
+            }
+            #praises{
+                position: relative;
+                right:-230px;
+                width: 160px;
+                height: auto;
+            }
+            #purpose{
+                width: 150px;
+                right: 170px;
+            }
+
+            #about:hover, #purpose:hover{
+                font-size: 18px;                
+            }
+
+            #praises:hover{
+                font-size: 18px;
+                width: 170px;
+            }            
+            #mainhead{
+                position: relative;
+                color:#fefeff;
+                font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+                text-align: center;
+                top: 80px;
+                          
+            }
+
+            #whycnt{
+                padding: 10px;
+                margin: 0px;
+                font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif; 
+       
+                background-color: #ffca42;
+                color: black;
+                height: 500px;
+            }
+            #whyravenhdng{
+                position: relative;
+                left: 90px;
+                top: 40px;
+            }
+
+
+            h2{                
+                top: 80px;
+                text-align: right;
+                position: relative;
+                right: 100px;
+            }       
+
+            #abtcnt,#rev{
+                padding: 10px;
+                margin: 0px;
+                font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif; 
+       
+                background-color: #738bd7;
+                color: #ffffff;
+                height: 500px;               
+            }
+            #devhdng{
+                position: relative;
+                left: 90px;
+                top: 40px;
+            }
+            #rev{
+                background-color: black;
+                color: #ffca42;
+            }
+        </style>
+        <script>
+        	console.log(localStorage.getItem('token'));
+            document.addEventListener('DOMContentLoaded', ()=>{
+                document.querySelectorAll('#loginbtn').forEach(button => {
+                    button.onclick = function(){
+                        window.location.href='http://localhost:8080/login'
+                    }
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <div id="toprect">            
+            <div id="navbar">
+            <button class="navbtn" id="purpose">Why Raven?</button>
+            <button class="navbtn" id="about">About</button>            
+            <button class="navbtn" id="praises">The Rave Reviews of Raven</button>                                   
+            </div> 
+            <div id="loginbtn"><button class="navbtn" id="login">Login</button></div>
+              
+            <h1 id="mainhead">Raven Task Tracker</h1>
+            <img src="styles/notes.svg" alt="Product Logo" id="logo">                              
+        </div>   
+         
+        <div id="whycnt">
+            <h1 id="whyravenhdng">Raven Makes Your life Easier</h1>
+            <h2 id="whyravencnt">keep track of your tasks and recieve notifications seemlessly</h2>
+            <h2 id="whyravencnt2">Never forget another meeting ever again.</h2>
+        </div> 
+        <div id="abtcnt">
+            <h1 id="devhdng">Developed by:</h1>
+            <h2 id="anish">Anish Kumar K - 2019A7PS0091H</h2>
+            <h2 id="pranav">Pranav Balaji - 2019A7PS0091H</h2>
+            <h2 id="gaurav">Gaurav Sinha - 2019A7PS0091H</h2>
+        </div>
+        <div id="rev">
+            <h1>"The best Task Tracker that the internet has ever seen."</h1>
+            <h2>- The Guardian</h2>
+        </div>    
+    </body>
+</html>

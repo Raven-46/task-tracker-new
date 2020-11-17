@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.raven.app.jwt.CreateAuthenticationToken;
 import com.raven.app.users.User;
@@ -67,7 +68,7 @@ public class OAuth2LoginController
 	
 	@GetMapping("/oauth/google")
 	@ResponseBody
-	public String nothing(@RequestParam String code) throws Exception
+	public ModelAndView nothing(@RequestParam String code) throws Exception
 	{
 		ResponseEntity<AccessResponseGoogle> response = null;
 		RestTemplate restTemplate = new RestTemplate();
@@ -106,18 +107,24 @@ public class OAuth2LoginController
 		}
 		System.out.println("email is " + email);
 		Optional<User> user = userRepo.findByEmail(email);
+		
+		ModelAndView mv = new ModelAndView();
 		if(user.isPresent())
 		{
 			if(user.get().getSignup()==2)
 			{
-				return createToken.createAuthenticationTokenSocial(user.get().getUsername()).toString();
+				mv.addObject("jwt", createToken.createAuthenticationTokenSocial2(user.get().getUsername()));
+				mv.setViewName("auth.jsp");
+				return mv;
 			}
 			else if(user.get().getSignup()==-2)
 			{
 				userRepo.delete(user.get());
-				return "Please sign up again";
+				mv.setViewName("auth.jsp");
+				return mv;
 			}
-			return "There is already an account with this email";
+			mv.setViewName("auth.jsp");
+			return mv;
 		}
 		User newUser = new User();
 		newUser.setEmail(email);
@@ -133,7 +140,8 @@ public class OAuth2LoginController
 		System.out.println(newUser.getSecret());
 		userRepo.save(newUser);
 		
-		return newUser.getSecret();
+		mv.setViewName("auth.jsp");
+		return mv;
 	}
 	
 	@GetMapping("/oauth/facebook")
@@ -150,7 +158,7 @@ public class OAuth2LoginController
 
 		String access_token_url = "https://graph.facebook.com/v8.0/oauth/access_token";
 		access_token_url += "?code=" + code;
-		access_token_url += "&client_id=403892724100855";
+		access_token_url += "&client_id=466247121017418";
 		access_token_url += "&client_secret=ENTER_SECRET";
 		access_token_url += "&redirect_uri=http://localhost:8080/oauth/facebook";
 

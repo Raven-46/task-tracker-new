@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>        
+        function sConsole(event){
+            event.preventDefault();
+            var username = document.getElementById("usidtext").value;
+            var password =  document.getElementById("pwd").value; 
+            var email = document.getElementById("mail").value;
+            var phone = document.getElementById("phn").value;
+            var profession = document.getElementById("prof").value;
+            console.log(username); 
+            console.log(password);
+            console.log(email);
+            console.log(phone);
+            console.log(profession);
+            console.log('hiii');            
+        
+
+        	object = {username,password,email,phone,profession};
+         
+			console.log(object);
+			console.log(JSON.stringify(object));
+        	fetch("/signup?mode=1", { 
+      
+      		// Adding method type 
+      		method: "POST", 
+        
+      		// Adding body or contents to send 
+      		body: JSON.stringify(object), 
+        
+      		// Adding headers to the request 
+      		headers: { 
+          		"Content-type": "application/json; charset=UTF-8"
+      		} 
+  			})
+    
+  			// Converting to JSON 
+  			.then(response => response.json()) 
+    
+  			// Displaying results to console 
+  			.then(json => {
+  				console.log(json);
+  			})
+        	
+		}
+
+
+        
+
+        
+        
+    </script>
+</head>
+<body>
+    <div id="container">
+        <form action="" id="form" onsubmit="sConsole(event)">
+        <div>
+          USERNAME            
+          <input type="text" name="data" id="usidtext">
+        </div>
+        <div>
+          PASSWORD
+          <input type="password" name="paswd" id="pwd">
+        </div>
+        <div>
+          EMAIL ID
+          <input type="text" name="email" id="mail">
+        </div>
+        <div>
+          PHONE NUMBER
+          <input type="number" name="phn" id="phn">
+        </div>
+        <div>
+          PROFESSION
+          <input type="text" name="prof" id="prof">
+        </div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+</body>
+</html>

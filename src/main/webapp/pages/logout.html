@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Logout</title>
+<script>
+	console.log("in logout");
+	console.log(localStorage.getItem('token'));
+	window.localStorage.clear();
+	console.log(localStorage.getItem('token'));
+	window.location.href = "http://localhost:8080/login";
+</script>
+</head>
+<body>
+
+</body>
+</html>

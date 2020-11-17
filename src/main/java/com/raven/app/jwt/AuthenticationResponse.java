@@ -2,7 +2,7 @@ package com.raven.app.jwt;
 
 public class AuthenticationResponse
 {
-	private final String jwt;
+	private String jwt;
 
 	public AuthenticationResponse(String jwt)
 	{
@@ -13,5 +13,8 @@ public class AuthenticationResponse
 	{
 		return jwt;
 	}
-
+	
+	public void setJwt(String jwt) {
+		this.jwt = jwt;
+	}
 }
