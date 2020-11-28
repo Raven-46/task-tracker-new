@@ -38,6 +38,13 @@ public class HomeController
 		return "homepage.html";
 	}
 	
+	@GetMapping("/just-once")
+	public String getJustOnce()
+	{
+		System.out.println("in /just-once");
+		return "justonce.html";
+	}
+	
 	@GetMapping("/login")
 	public String getLogin()
 	{
@@ -75,6 +82,12 @@ public class HomeController
 	public ResponseEntity<?> signUp(@RequestBody User user, @RequestParam Integer mode) throws Exception
 	{
 		return signUpService.signUp(user, mode);
+	}
+	
+	@GetMapping("/confirm-otp")
+	public String getConfirmOtp()
+	{
+		return "otp.html";
 	}
 	
 	@PostMapping("/confirm-otp")

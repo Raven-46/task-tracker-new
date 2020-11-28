@@ -1,0 +1,15 @@
+#dropdown {
+  display: flex;
+  justify-content: center;
+}
+.input-group-append:focus {
+  border-color: crimson;
+}
+#recmaildiv {
+  display: flex;
+  justify-content: center;
+}
+
+#registerBox {
+  width: 600px;
+}

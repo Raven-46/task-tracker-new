@@ -31,6 +31,7 @@ public class ItemController
 	@PostMapping("/item")
 	public void addProduct(@RequestBody ItemRequest itemRequest)
 	{
+		System.out.println("in post");
 		Item item = new Item();
 		item.setUsername(jwtRequestFilter.getJwtUsername());
 		item.setCategory(itemRequest.getCategory());
@@ -79,6 +80,7 @@ public class ItemController
 	@PutMapping("/items/{id}/add")
 	public void addQuantity(@PathVariable int id)
 	{
+		System.out.println("in add" + id);
 		itemRepo.findById(id).ifPresentOrElse(
 				item -> 
 				{

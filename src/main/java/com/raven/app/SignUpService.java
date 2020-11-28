@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import com.raven.app.email.EmailService;
@@ -70,10 +69,7 @@ public class SignUpService
 		cl.add(Calendar.MINUTE, 5);
 		if (new Date().compareTo(cl.getTime()) > 0)
 			{
-				userRepo.delete(user);
-				return ResponseEntity
-					.status(HttpStatus.FORBIDDEN)
-		            .body("Timeout");
+				return ResponseEntity.ok(0);
 			}
 		
 		System.out.println(signUpRequest.getOtp());
@@ -87,9 +83,7 @@ public class SignUpService
 			return createToken.createAuthenticationTokenNormal(authenticationRequest, true);
 		}
 		System.out.println("invalid");
-		return ResponseEntity
-	            .status(HttpStatus.FORBIDDEN)
-	            .body("Wrong OTP");
+		return ResponseEntity.ok(1);
 //		if(createToken.validateOtp(signUpRequest.getUsername(), signUpRequest.getOtp()))
 //		{
 //			authenticationRequest.setUsername(signUpRequest.getUsername());

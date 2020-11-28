@@ -1,0 +1,244 @@
+#sidebar {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #9dc2fb;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  padding-left: 20px;
+}
+.links {
+  color: black;
+  font-size: 25px;
+}
+.links:hover {
+  color: #292841;
+}
+.linkcontainer {
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  background-color: white;
+  height: 50px;
+  box-shadow: 0px 3px 6px black;
+}
+.linkcontainer:hover {
+  background-color: lightgray;
+}
+#taskslink {
+  position: relative;
+  left: 30px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.linkcontainer:not(#taskslink) {
+  animation-name: slideleft;
+  animation-duration: 0.1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+
+.linkcontainer:not(#taskslink):hover {
+  animation-name: slideright;
+  animation-duration: 0.1s;
+  background-color: lightgray;
+}
+@keyframes slideright {
+  0% {
+    position: relative;
+    left: 0px;
+  }
+
+  100% {
+    position: relative;
+    left: 30px;
+  }
+}
+@keyframes slideleft {
+  0% {
+    position: relative;
+    left: 30px;
+  }
+  100% {
+    position: relative;
+    left: 0px;
+  }
+}
+
+#usnamedisp {
+  position: relative;
+  left: -10px;
+  border-color: black;
+  border-style: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  top: -35px;
+}
+.decor {
+  border-color: rgb(29, 28, 28);
+  position: relative;
+  top: -50px;
+  width: 110px;
+  left: -10px;
+}
+#topdecorline {
+  position: relative;
+  top: -27px;
+}
+
+#taskSearchInput {
+  position: relative;
+  margin: 20px;
+  left: 270px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  height: 40px;
+  width: 500px;
+}
+
+#addNew {
+  position: relative;
+  left: 270px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  margin: 20px;
+  width: 500px;
+}
+
+.card-header {
+  background-color: #9dc2fb;
+}
+.btn {
+  color: black;
+}
+
+#taskScreen {
+  display: none;
+  position: fixed;
+  left: 50%;
+  width: 600px;
+  margin-left: -200px;
+  top: 5%;
+  background-color: white;
+  border-width: 1px;
+  border-color: #007bff;
+  border-style: solid;
+  border-radius: 30px;
+  animation-name: slidedown;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+@keyframes slidedown {
+  0% {
+    position: fixed;
+    top: -50%;
+  }
+  100% {
+    position: fixed;
+    top: 5%;
+  }
+}
+
+.applyScroll {
+  overflow-y: scroll;
+  height: 350px;
+}
+.applyScroll::-webkit-scrollbar {
+  width: 8px;
+}
+.applyScroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+.applyScroll::-webkit-scrollbar-thumb {
+  background: #9dc2fb;
+  border-radius: 30px;
+}
+.applyScroll::-webkit-scrollbar-thumb:hover {
+  background: #9dc2fb;
+}
+
+.card-footer {
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+.card {
+  position: relative;
+  left: 270px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  margin: 20px;
+  width: 500px;
+}
+.hidden {
+  display: none;
+}
+.remindBefore {
+  display: block;
+}
+
+#exampleInputTime,
+#pickbtn {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+#exampleInputTime {
+  display: inline-block;
+  width: 84%;
+}
+#pickbtn {
+  position: relative;
+  top: -2px;
+  height: 38px;
+  color: black;
+  display: inline-block;
+  width: 15%;
+  text-align: center;
+  padding: 3px;
+  background-color: #9dc2fb;
+}
+#pickbtn:hover {
+  background-color: #9dc2fb;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 300px;
+  height: 34px;
+}
+#del {
+  position: relative;
+  background-color: red;
+  border-style: none;
+}
+#closebtncont {
+  border-top-right-radius: 27px;
+  border-top-left-radius: 27px;
+}
+#title {
+  text-align: left;
+}
+.btn {
+  color: black;
+  background-color: #9dc2fb;
+  border-style: none;
+}
+#units {
+  display: inline-block;
+  width: 30%;
+}
+#timeNumber {
+  display: inline-block;
+  width: 30%;
+}
+#reminderReq {
+  zoom: 1.18;
+}

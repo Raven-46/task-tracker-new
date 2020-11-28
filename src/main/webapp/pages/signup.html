@@ -2,84 +2,86 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://localhost:8080/scripts/signup.js"></script>
+    <link rel="stylesheet" href="http://localhost:8080/styles/signup.css">
+    <link rel="stylesheet" href="http://localhost:8080/styles/adminlte.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <title>Document</title>
-    <script>        
-        function sConsole(event){
-            event.preventDefault();
-            var username = document.getElementById("usidtext").value;
-            var password =  document.getElementById("pwd").value; 
-            var email = document.getElementById("mail").value;
-            var phone = document.getElementById("phn").value;
-            var profession = document.getElementById("prof").value;
-            console.log(username); 
-            console.log(password);
-            console.log(email);
-            console.log(phone);
-            console.log(profession);
-            console.log('hiii');            
-        
-
-        	object = {username,password,email,phone,profession};
-         
-			console.log(object);
-			console.log(JSON.stringify(object));
-        	fetch("/signup?mode=1", { 
-      
-      		// Adding method type 
-      		method: "POST", 
-        
-      		// Adding body or contents to send 
-      		body: JSON.stringify(object), 
-        
-      		// Adding headers to the request 
-      		headers: { 
-          		"Content-type": "application/json; charset=UTF-8"
-      		} 
-  			})
-    
-  			// Converting to JSON 
-  			.then(response => response.json()) 
-    
-  			// Displaying results to console 
-  			.then(json => {
-  				console.log(json);
-  			})
-        	
-		}
-
-
-        
-
-        
-        
-    </script>
 </head>
-<body>
-    <div id="container">
-        <form action="" id="form" onsubmit="sConsole(event)">
-        <div>
-          USERNAME            
-          <input type="text" name="data" id="usidtext">
-        </div>
-        <div>
-          PASSWORD
-          <input type="password" name="paswd" id="pwd">
-        </div>
-        <div>
-          EMAIL ID
-          <input type="text" name="email" id="mail">
-        </div>
-        <div>
-          PHONE NUMBER
-          <input type="number" name="phn" id="phn">
-        </div>
-        <div>
-          PROFESSION
-          <input type="text" name="prof" id="prof">
-        </div>
-          <button type="submit">Submit</button>
+<body class="hold-transition register-page">
+  <div class="register-box" id="registerBox">
+    <div class="register-logo">
+      <b>REGISTRATION</b><br>
+      Task Tracker
+    </div>
+   
+    <div class="card">
+      <div class="card-body register-card-body">
+        <p class="login-box-msg">Sign Up</p>
+   
+        <form action="" id="form" onsubmit="registerUser(event)">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter E-mail">
+          </div>
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder=" Enter Username" pattern="[\w_]{1,20}">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password"  placeholder="Enter Password" pattern="[^\s]{5,20}">
+          </div>
+          <div class="form-group">
+            <label for="password">Re-Enter Password</label>
+            <input type="password" class="form-control" id="passwordconfirm" name="passwordconfirm"  placeholder="Re-Enter Password" pattern="[^\s]{5,20}">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="number" class="form-control" id="phone" name="phone"  placeholder="Enter Phone Number" pattern="\d{10}">
+          </div>
+   
+          <div class="form-group ">
+            <label for="profession">Profession</label>
+            <select class="form-control" id="profession" placeholder="Profession">
+              <option selected>Student</option>
+              <option>Educator</option>
+              <option>Home maker</option>
+            </select>
+          </div>
+   
+          <div class="row">
+            <div class="col-8">
+              <small><ul>
+   
+              </ul></small> 
+            </div>
+            <!-- /.col -->
+            <div class="col-4">
+              <button type="submit" class="btn btn-primary btn-block">Register</button>
+            </div>
+            <!-- /.col -->
+          </div>
         </form>
+   
+        <div class="social-auth-links text-center">
+          <p>- OR -</p>
+          <a href="#" class="btn btn-block btn-primary">
+            <i class="fab fa-facebook mr-2"></i>
+            Sign up using Facebook
+          </a>
+          <a href="#" class="btn btn-block btn-danger">
+            <i class="fab fa-google-plus mr-2"></i>
+            Sign up using Google+
+          </a>
+        </div>
+   
+        <a href="signup.html" class="text-center">I already have a membership</a>
       </div>
+      <!-- /.form-box -->
+    </div><!-- /.card -->
+  </div>
 </body>
 </html>

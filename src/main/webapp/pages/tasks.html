@@ -1,18 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="http://localhost:8080/scripts/tasks.js"></script>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <script src="http://localhost:8080/scripts/tasks.js"></script>
+   <script src="http://localhost:8080/scripts/simplepicker.js"></script>
+   <!-- Tell the browser to be responsive to screen width -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- Font Awesome -->
+   <link rel="stylesheet" href="http://localhost:8080/styles/fontawesome-free/css/all.min.css">
+   <!-- Ionicons -->
+   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+   <!-- Tempusdominus Bbootstrap 4 -->
+   <!--<link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">-->
+   <!-- iCheck -->
+   <!--<link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">-->
+   <!-- JQVMap -->
+   <!--<link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">-->
+   <!-- Theme style -->
+   <link rel="stylesheet" href="http://localhost:8080/styles/adminlte.min.css">
+   <link rel="stylesheet" href="http://localhost:8080/styles/simplepicker.css">
+   <!-- overlayScrollbars -->
+   <!--<link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">-->
+   <!-- Daterange picker -->
+   <!--<link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">-->
+   <!-- summernote -->
+   <!--<link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">-->
+   <!-- Google Font: Source Sans Pro -->
+   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+   <link rel="stylesheet" href="http://localhost:8080/styles/tasks.css">
 </head>
 <body>
-   <div id="container">
-
-<a href="http://localhost:8080/my/diary">diary</a>
-<a href="http://localhost:8080/my/items">items</a>    
-
-
+   <aside>
+    <div id="sidebar"> 
+      <img src="http://localhost:8080/styles/notes.svg" style="width: 100px; position: relative; top: -27px; left: 60px;">
+      <HR id="topdecorline" class="decor">
+        <div id="usnamedisp">
+          <h2 id="usernameHead"></h2>
+        </div>
+      <HR class="decor">
+      <div class="linkcontainer">
+      <a class="links" href="http://localhost:8080/my/items">ITEMS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart3" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+        </svg></a><br>
+      </div><br>
+      <div class="linkcontainer" id="taskslink">
+      <a class="links">TASKS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-list-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
+        </svg></a><br>
+      </div><br>
+      <div class="linkcontainer">
+      <a class="links" href="http://localhost:8080/my/diary">DIARY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-journal-bookmark" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+        <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+        <path fill-rule="evenodd" d="M6 8V1h1v6.117L8.743 6.07a.5.5 0 0 1 .514 0L11 7.117V1h1v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8z"/>
+        </svg></a><br>
+      </div><br>
+      <div class="linkcontainer">
+        <a class="links" href="http://localhost:8080/my/friends">FRIENDS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-plus-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm7.5-3a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+        </svg>
+        </div><br>
+      <a href="http://localhost:8080/logout" class="button">LOGOUT&nbsp;&nbsp;<i class="fas fa-sign-out-alt"></i></a>
+    </div>
+  </aside>
+  <input class="form-control filter" type="text" onkeyup="searchTasks()" placeholder="Search for tasks..." id="taskSearchInput">
+  <div id = "addNew">
+    <button type="button" class="btn btn-block btn-outline-primary" onclick = "addCategoryPage()">+ Add Category</button>
    </div>
+   <div id="container">
+   </div>
+   <!--
+   <div id="taskScreen">         
+    <form role="form" onsubmit = "sendRequest(event)">
+        <div class="card-body">
+        	<input type="hidden" id="taskId">
+          <div class="form-group">
+            <label for="inputCategory">Category</label>
+            <input type="text" class="form-control" id="exampleInputCategory" placeholder="Category Name">
+          </div>
+          <div class="form-group">
+            <label for="inputTask">Task</label>
+            <input type="text" class="form-control" id="exampleInputTaskName" placeholder="Task Name">
+          </div>
+          <div class="form-group">
+            <label for="inputTime">Due Time</label><br>
+            <input class="form-control" id="exampleInputTime" placeholder="Date and Time">
+            <button type="button" class="simplepicker-btn" onclick = "openPicker()">Pick Time</button>
+            <input type="hidden" id="timeMySQL">
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="reminderReq" onclick="toggleRemindBefore()" checked>
+            Reminder required
+            <span class="slider round"></span>
+            <div id = "remindBefore">
+              <input type="number" value=1 id="timeNumber">
+              <select name="units" id="units">
+                <option value="mins">Minutes</option>
+                <option value="hours" selected = "selected">Hours</option>
+                <option value="days">Days</option>
+                <option value="weeks">Weeks</option>
+                <option value="months">Months</option>
+              </select>
+            </div>
+          </label>
+        </div>
+        <div class="card-footer">
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="button" class="btn btn-primary" onclick = "closeTaskPage()">Close</button>
+        </div>
+      </form>
+  </div> -->
+  <div id="taskScreen">         
+    <form role="form" onsubmit = "sendRequest(event)">
+      <div class="card-primary">
+        <div id="closebtncont" class="card-header">
+          <div class="card-tools">
+            <svg onclick = "closeTaskPage()" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="card-body">
+        	<input type="hidden" id="taskId">
+          <div class="form-group">
+            <label for="inputCategory">Category</label>
+            <input type="text" class="form-control" id="exampleInputCategory" placeholder="Category Name" required>
+          </div>
+          <div class="form-group">
+            <label for="inputTask">Task</label>
+            <input type="text" class="form-control" id="exampleInputTaskName" placeholder="Task Name" required>
+          </div>
+          <div class="form-group">
+            <label for="inputTime">Due Time</label><br>
+            <input class="form-control" id="exampleInputTime" placeholder="Date and Time" required>
+            <button type="button" class="btn btn-primary" id="pickbtn" onclick = "openPicker()"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-calendar-date" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+              <path d="M6.445 11.688V6.354h-.633A12.6 12.6 0 0 0 4.5 7.16v.695c.375-.257.969-.62 1.258-.777h.012v4.61h.675zm1.188-1.305c.047.64.594 1.406 1.703 1.406 1.258 0 2-1.066 2-2.871 0-1.934-.781-2.668-1.953-2.668-.926 0-1.797.672-1.797 1.809 0 1.16.824 1.77 1.676 1.77.746 0 1.23-.376 1.383-.79h.027c-.004 1.316-.461 2.164-1.305 2.164-.664 0-1.008-.45-1.05-.82h-.684zm2.953-2.317c0 .696-.559 1.18-1.184 1.18-.601 0-1.144-.383-1.144-1.2 0-.823.582-1.21 1.168-1.21.633 0 1.16.398 1.16 1.23z"/>
+            </svg></button>
+            <input type="hidden" id="timeMySQL">
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="reminderReq" onclick="toggleRemindBefore()" checked>
+            Reminder required
+            <span class="slider round"></span>
+            <div id = "remindBefore">
+              <input type="number" class="form-control" value=1 id="timeNumber">
+              <select class="form-control" name="units" id="units">
+                <option value="mins">Minutes</option>
+                <option value="hours" selected = "selected">Hours</option>
+                <option value="days">Days</option>
+                <option value="weeks">Weeks</option>
+                <option value="months">Months</option>
+              </select>
+            </div>
+          </label>
+        </div>
+        <div class="card-footer">
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="button" id="del" class="btn btn-primary" onclick = "deleteTask()">Delete&nbsp;&nbsp;&nbsp;&nbsp;<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+          </svg></button>
+        </div>
+      </form>
+  </div>
+</div>
 </body>
 </html>

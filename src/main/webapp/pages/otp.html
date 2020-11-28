@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+    <link rel="stylesheet" href="http://localhost:8080/styles/adminlte.min.css">
+    <link rel="stylesheet" href="http://localhost:8080/styles/otp.css">
+    <script src="http://localhost:8080/scripts/otp.js"></script>
+</head>
+<body>      
+    <div id="otpsub" class="card">
+        <h3>OTP Confirmation</h3>
+              
+        <form action="" onsubmit="sendOtp(event)">
+            <label><h7>Enter the 6 digit otp recieved</h7></label><br><br>
+            <input id="otpinpt" type="number" placeholder="Enter OTP" required pattern="\d{6}">&nbsp;&nbsp;
+            <button type="submit" id="sub">Submit</button><br><br>
+            <label>The OTP will only be valid for 5 minutes</label>
+        </form>
+    </div>
+</body>
+</html>

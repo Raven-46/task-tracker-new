@@ -57,7 +57,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter
 			.antMatchers("/oauth/facebook").permitAll()
 			.antMatchers("/just-once").permitAll()
 			.antMatchers("/img/*").permitAll()
-			.antMatchers("/styles/*").permitAll()
+			.antMatchers("/styles/**").permitAll()
 			.antMatchers("/scripts/*").permitAll()
 			.antMatchers("/favicon.ico").permitAll()
 			.antMatchers("/my/*").permitAll()

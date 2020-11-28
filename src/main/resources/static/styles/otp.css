@@ -1,0 +1,34 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+#sub:focus,
+#otpinpt:focus {
+  outline: none;
+}
+#otpsub {
+  position: relative;
+  top: 280px;
+  margin: auto;
+  padding: 40px;
+  width: 500px;
+  box-shadow: 0px 3px 6px black;
+}
+#otpinpt {
+  box-shadow: 0px 3px 6px black;
+  border-style: none;
+  border-radius: 5px;
+  box-shadow: 0px 3px 6px black;
+}
+#id {
+  width: 500px;
+  height: 25px;
+}
+#sub {
+  background-color: #9dc2fb;
+  border-style: none;
+  height: 28px;
+  border-radius: 5px;
+  box-shadow: 0px 3px 6px black;
+}

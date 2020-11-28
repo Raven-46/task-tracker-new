@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <script src="http://localhost:8080/scripts/justonce.js"></script>
+   <!-- Tell the browser to be responsive to screen width -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- Font Awesome -->
+   <link rel="stylesheet" href="http://localhost:8080/styles/fontawesome-free/css/all.min.css">
+   <!-- Ionicons -->
+   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+   <!-- Tempusdominus Bbootstrap 4 -->
+   <!--<link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">-->
+   <!-- iCheck -->
+   <!--<link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">-->
+   <!-- JQVMap -->
+   <!--<link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">-->
+   <!-- Theme style -->
+   <link rel="stylesheet" href="http://localhost:8080/styles/adminlte.min.css">
+   <!-- overlayScrollbars -->
+   <!--<link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">-->
+   <!-- Daterange picker -->
+   <!--<link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">-->
+   <!-- summernote -->
+   <!--<link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">-->
+   <!-- Google Font: Source Sans Pro -->
+   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+   <link rel="stylesheet" href="http://localhost:8080/styles/justonce.css">
+      </head>
+<body>
+    <body class="hold-transition register-page">
+        <div class="register-box">
+          <div class="register-logo">
+            <b>Task Tracker</b><br>Details
+          </div>
+        
+          <div class="card">
+            <div class="card-body register-card-body">
+              <p class="login-box-msg">Provide Details To Continue</p>
+        
+              <form action="" onsubmit="finishJustOnce(event)">
+                <label>Username</label>
+                <div class="input-group mb-3">                    
+                  <input type="text" id="username" class="form-control" placeholder="Enter Username">
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <span class="fas fa-user"></span>
+                    </div>
+                  </div>
+                </div>
+                <label>Phone Number</label>
+                <div class="input-group mb-3">
+                  <input type="number" id="phone" class="form-control" pattern="\d{10}" placeholder="Phone Number">
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <span class="fas fa-envelope"></span>
+                    </div>
+                  </div>
+                </div>
+                <label>Profession</label>
+                <div class="input-group mb-3">
+                  <select class="form-control" id = "profession" placeholder="Profession">                    
+                        <option selected disabled>Profession</option>
+                        <option>Student</option>
+                        <option>Home maker</option>
+                        <option>Other</option>                       
+                  </select>
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <span class="fas fa-user-tie"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <!-- /.col -->
+                  <div class="col-4">
+                    <button type="submit" class="btn btn-primary btn-block">Register</button>
+                  </div>
+                  <!-- /.col -->
+                </div>
+              </form>        
+            </div>
+            <!-- /.form-box -->
+          </div><!-- /.card -->
+        </div>
+        <!-- /.register-box -->
+</body>
+</html>

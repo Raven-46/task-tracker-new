@@ -5,10 +5,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.mail.MessagingException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import com.itextpdf.text.DocumentException;
 import com.raven.app.email.EmailService;
 import com.raven.app.users.User;
 import com.raven.app.users.UserRepo;
@@ -36,7 +39,15 @@ public class ItemService
 						{
 							System.out.println(recipient.getUsername());
 							List<Item> items = itemRepo.findAllByUsername(recipient.getUsername());
-							emailService.sendItems(items, recipient.getUsername());
+							try {
+								emailService.sendItems(items, recipient.getUsername());
+							} catch (MessagingException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							} catch (DocumentException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
 						});
 	}
 }

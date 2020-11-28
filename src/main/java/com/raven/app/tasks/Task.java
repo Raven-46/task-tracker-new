@@ -29,7 +29,7 @@ public class Task
 	private String date;
 	
 	@Column(name="remindbefore")
-	private int remindBefore;
+	private String remindBefore;
 	
 	@Column(name="done")
 	private boolean done;
@@ -80,11 +80,11 @@ public class Task
 		this.date = date;
 	}
 
-	public int getRemindBefore() {
+	public String getRemindBefore() {
 		return remindBefore;
 	}
 
-	public void setRemindBefore(int remindBefore) {
+	public void setRemindBefore(String remindBefore) {
 		this.remindBefore = remindBefore;
 	}
 	

@@ -6,7 +6,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import javax.mail.MessagingException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailException;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -35,7 +38,15 @@ public class TaskService
 					Date date =  format.parse(task.getDate());
 					System.out.println("Date " + task.getUsername() + " said: " + date);
 					cl.setTime(date);
-					cl.add(Calendar.SECOND, -task.getRemindBefore());
+					if(task.getRemindBefore().contains("mins"))
+						cl.add(Calendar.MINUTE, -Integer.parseInt(task.getRemindBefore().substring(0, task.getRemindBefore().length() - 5)));
+					else if(task.getRemindBefore().contains("hours"))
+						cl.add(Calendar.HOUR, -Integer.parseInt(task.getRemindBefore().substring(0, task.getRemindBefore().length() - 6)));
+					else if(task.getRemindBefore().contains("weeks"))
+						cl.add(Calendar.WEEK_OF_YEAR, -Integer.parseInt(task.getRemindBefore().substring(0, task.getRemindBefore().length() - 6)));
+					else if(task.getRemindBefore().contains("months"))
+						cl.add(Calendar.MONTH, -Integer.parseInt(task.getRemindBefore().substring(0, task.getRemindBefore().length() - 7)));
+					System.out.println(cl.getTime());
 					
 					if (new Date().compareTo(cl.getTime()) > 0)
 					{
@@ -46,6 +57,12 @@ public class TaskService
 			            taskRepo.save(task);
 			        } 
 			} catch (ParseException e) {
+				e.printStackTrace();
+			} catch (MailException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (MessagingException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		});

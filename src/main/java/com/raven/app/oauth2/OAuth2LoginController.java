@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -39,24 +38,16 @@ public class OAuth2LoginController
 	public ResponseEntity<?> justOnce(@RequestBody JustOnceRequest justOnceRequest, @RequestParam String email) throws Exception
 	{
 		if(userRepo.findByEmail(email).isEmpty())
-			return ResponseEntity
-		            .status(HttpStatus.LOCKED)
-		            .body("Error");
+			return ResponseEntity.ok("Error");
 		if(userRepo.findByUsername(justOnceRequest.getUsername()).isPresent())
-			return ResponseEntity
-		            .status(HttpStatus.LOCKED)
-		            .body("Username already taken");
+			return ResponseEntity.ok(new JustOnceResponse("Username already taken"));
 		if(!userRepo.findByEmail(email).get().getSecret().equals(justOnceRequest.getSecret()))
 		{
-			return ResponseEntity
-		            .status(HttpStatus.LOCKED)
-		            .body("Invalid");
+			return ResponseEntity.ok(new JustOnceResponse("Invalid"));
 		}
 		User newUser = userRepo.findByEmail(email).get();
 		if(newUser.getSignup()>0)
-			return ResponseEntity
-		            .status(HttpStatus.LOCKED)
-		            .body("Signup already done");
+			return ResponseEntity.ok(new JustOnceResponse("Signup already done"));
 		newUser.setPhone(justOnceRequest.getPhone());
 		newUser.setProfession(justOnceRequest.getProfession());
 		newUser.setUsername(justOnceRequest.getUsername());
@@ -113,6 +104,7 @@ public class OAuth2LoginController
 		{
 			if(user.get().getSignup()==2)
 			{
+				mv.addObject("status", "ok");
 				mv.addObject("jwt", createToken.createAuthenticationTokenSocial2(user.get().getUsername()));
 				mv.setViewName("auth.jsp");
 				return mv;
@@ -120,9 +112,11 @@ public class OAuth2LoginController
 			else if(user.get().getSignup()==-2)
 			{
 				userRepo.delete(user.get());
+				mv.addObject("status", "invalid");
 				mv.setViewName("auth.jsp");
 				return mv;
 			}
+			mv.addObject("status", "emailExists");
 			mv.setViewName("auth.jsp");
 			return mv;
 		}
@@ -139,7 +133,9 @@ public class OAuth2LoginController
 		
 		System.out.println(newUser.getSecret());
 		userRepo.save(newUser);
-		
+		mv.addObject("status", "new");
+		mv.addObject("email", email);
+		mv.addObject("secret", newUser.getSecret());
 		mv.setViewName("auth.jsp");
 		return mv;
 	}
